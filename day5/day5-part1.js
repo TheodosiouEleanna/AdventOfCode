@@ -29,7 +29,7 @@ const supplyStack = [
 const moveItems = (items, from, to) => {
   for (let i = 0; i < items.length; i++) {
     if (from.includes(items[i])) {
-      from.splice(i, 1);
+      from.splice(0, 1);
       to.unshift(items[i]);
     }
   }
@@ -48,12 +48,13 @@ for (let i = 0; i < moves.length; i++) {
   console.log(itemsToMove, arrayFrom, arrayTo);
   console.log("-----------------------------");
 
-  const modifiedStacks = moveItems(itemsToMove, arrayFrom, arrayTo);
-  console.log(modifiedStacks);
+  const { from, to } = moveItems(itemsToMove, arrayFrom, arrayTo);
+  console.log({ from, to });
 
-  supplyStack[moves[i][1] - 1] = modifiedStacks.from;
-  supplyStack[moves[i][2] - 1] = modifiedStacks.to;
+  supplyStack[moves[i][1] - 1] = from;
+  supplyStack[moves[i][2] - 1] = to;
 }
+
 const finalTopItems = supplyStack
   .reduce((acc, itemArray) => {
     return [...acc, itemArray[itemArray.length - 1]];
