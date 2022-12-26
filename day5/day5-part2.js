@@ -30,14 +30,14 @@ const moveItems = (items, from, to) => {
   for (let i = 0; i < items.length; i++) {
     if (from.includes(items[i])) {
       from.splice(0, 1);
-      to.unshift(items[i]);
     }
   }
-  return { from, to };
+  to.unshift(items);
+  return { from, to: to.flat() };
 };
 
-for (let i = 0; i < 5; i++) {
-  // for (let i = 0; i < moves.length; i++) {
+// for (let i = 0; i < 5; i++) {
+for (let i = 0; i < moves.length; i++) {
   const numberOfMoves = moves[i][0];
   const arrayFrom = supplyStack[moves[i][1] - 1];
   const arrayTo = supplyStack[moves[i][2] - 1];
