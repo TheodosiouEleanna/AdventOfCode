@@ -36,6 +36,7 @@ const moveItems = (items, from, to) => {
   return { from, to };
 };
 
+// for (let i = 0; i < 5; i++) {
 for (let i = 0; i < moves.length; i++) {
   const numberOfMoves = moves[i][0];
   const arrayFrom = supplyStack[moves[i][1] - 1];
@@ -57,7 +58,7 @@ for (let i = 0; i < moves.length; i++) {
 
 const finalTopItems = supplyStack
   .reduce((acc, itemArray) => {
-    return [...acc, itemArray[itemArray.length - 1]];
+    return [...acc, itemArray[0]];
   }, [])
   .join("");
 
